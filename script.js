@@ -1,5 +1,5 @@
-var total1 = 0;
-var total2 = 0;
+var total1 = "";
+var total2 = "";
 var finalTotal = 0;
 var operator = "";
 
@@ -71,10 +71,3 @@ $(".clear").click(function () {
     finalTotal = 0;
     $("#result").empty();
 })
-
-
-// $("#first-number").text =
-
-//     $("#operator")
-
-// $("#second-number")
