@@ -2,6 +2,7 @@ var total1 = "";
 var total2 = "";
 var finalTotal = 0;
 var operator = "";
+calculationPerformed = false;
 
 var operations = {
     plus: function (num1, num2) {
@@ -24,7 +25,7 @@ var operations = {
 // Numbers
 $(".number").click(function () {
 
-    if (operator) {
+    if (operator && !calculationPerformed) {
         if (!total2) {
             total2 = $(this).val();
             $("#second-number").text(total2);
@@ -45,7 +46,7 @@ $(".number").click(function () {
 
 // Operator
 $(".operator").click(function () {
-    if (total1) {
+    if (total1 && !calculationPerformed) {
         operator = $(this).val();
         $("#operator").text(operator);
     }
@@ -53,10 +54,10 @@ $(".operator").click(function () {
 
 // Equal
 $(".equal").click(function () {
-    if (total1 && operator && total2) {
+    if (total1 && operator && total2 && !calculationPerformed) {
         finalTotal = operations[operator](total1, total2);
         $("#result").text(finalTotal);
-
+        calculationPerformed = true;
     }
 })
 
@@ -70,4 +71,5 @@ $(".clear").click(function () {
     $("#operator").empty();
     finalTotal = 0;
     $("#result").empty();
+    calculationPerformed = false;
 })
